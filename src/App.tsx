@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import Chat from './components/Chat'
-import Header from './components/Header'
+import Chat from "./components/Chat";
+import Header from "./components/Header";
 
 function App() {
   return (
@@ -15,7 +14,7 @@ function App() {
         </aside>
       </section>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -11,10 +11,12 @@ interface Message {
 
 const useChat = () => {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const sendMessage = async (message: string) => {
     const userMessage: Message = { type: "user", message };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
+    setLoading(true);
 
     try {
       const responseMessage = await ChatbotService.sendMessage(message);
@@ -31,10 +33,12 @@ const useChat = () => {
           "I am sorry, right now I am not able to address your question :c",
       };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
+    } finally {
+      setLoading(false);
     }
   };
 
-  return { messages, sendMessage };
+  return { messages, sendMessage, loading };
 };
 
 export default useChat;

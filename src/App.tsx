@@ -3,6 +3,7 @@ import Chat from './components/Chat'
 import Header from './components/Header'
 import Slides from './components/Slides'
 
+
 function App() {
   const [showSlides, setShowSlides] = useState(true);
   
@@ -23,7 +24,7 @@ function App() {
         </aside>
       </section>
     </main>
-  )
+  );
 }
 
 export default App

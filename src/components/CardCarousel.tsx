@@ -9,6 +9,7 @@ import '../CardCarousel.css';
 // Define the type for the item
 interface CarouselItem {
   text: string;
+  phrase: string;
   image?: string;
 }
 
@@ -24,7 +25,8 @@ const CardCarousel = () => {
       {data.map((item: CarouselItem, index: number) => (
         <SwiperSlide key={index}>
           <div className="swiper-slide-content gap-y-10">
-            <p>{item.text}</p>
+            <h1>{item.text}</h1>
+            <p>{item.phrase}</p>
             {item.image && <img src={item.image} alt={`Slide ${index}`} className='rounded-lg w-[30rem]' />}
 
           </div>

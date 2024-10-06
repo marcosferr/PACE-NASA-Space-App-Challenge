@@ -5,6 +5,7 @@ interface ChatBotResponse {
   response: string;
   img_url?: string[];
   references?: string[];
+  followup_questions?: string[];
 }
 class ChatbotService {
   async sendMessage(message: string): Promise<ChatBotResponse> {

@@ -36,6 +36,10 @@ const Chat = () => {
     }
   };
 
+  const setFollowupQuestion = (question: string) => {
+    setInputValue(question);
+  };
+
   useEffect(() => {
     if (lastMessageRef.current) {
       lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
@@ -115,6 +119,22 @@ const Chat = () => {
                 <Loader />{" "}
               </div>
             )}
+            {messages.length > 0 &&
+              messages[messages.length - 1].followup_questions && (
+                <div className="flex gap-3 my-4 text-gray-600 text-sm flex-1">
+                  {messages[messages.length - 1].followup_questions?.map(
+                    (question, index) => (
+                      <button
+                        key={index}
+                        className="text-blue-500 underline"
+                        onClick={() => setFollowupQuestion(question)}
+                      >
+                        {question}
+                      </button>
+                    )
+                  )}
+                </div>
+              )}
             <div id="bottomRef" ref={bottomRef} tabIndex={-1}></div>
           </div>
           <div className="w-full flex items-center border-t py-2">

@@ -43,7 +43,27 @@ const useChat = () => {
     }
   };
 
-  return { messages, sendMessage, loading };
+  const playTTS = async () => {
+    if (messages.length === 0) return;
+
+    const lastMessage = messages[messages.length - 1];
+    if (lastMessage.type !== "computer") return;
+
+    try {
+      const audioBuffer = await ChatbotService.getSpeech(lastMessage.message);
+      const audioContext = new window.AudioContext();
+      const source = audioContext.createBufferSource();
+      audioContext.decodeAudioData(audioBuffer, (buffer) => {
+        source.buffer = buffer;
+        source.connect(audioContext.destination);
+        source.start(0);
+      });
+    } catch (error) {
+      console.error("Failed to play TTS:", error);
+    }
+  };
+
+  return { messages, sendMessage, loading, playTTS };
 };
 
 export default useChat;

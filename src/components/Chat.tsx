@@ -3,9 +3,12 @@ import InputComponent from "./Input.tsx";
 import useChat from "../hooks/useChat";
 import { Loader } from "../components/Loader/Loader.tsx";
 import UserIcon from "./icons/UserIcon.tsx";
+import ImageModal from "./ImageModal.tsx";
 const Chat = () => {
   const { messages, sendMessage, loading } = useChat();
   const [inputValue, setInputValue] = useState("");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const lastMessageRef = useRef<HTMLDivElement>(null);
   const handleSendMessage = () => {
@@ -13,6 +16,15 @@ const Chat = () => {
       sendMessage(inputValue);
       setInputValue("");
     }
+  };
+
+  const openModal = (imageUrl: string) => {
+    setSelectedImage(imageUrl);
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setSelectedImage(null);
+    setModalIsOpen(false);
   };
 
   useEffect(() => {
@@ -69,10 +81,11 @@ const Chat = () => {
                       <img
                         key={index}
                         src={url}
-                        className="rounded-lg"
-                        width={100}
-                        height={100}
-                      ></img>
+                        className="rounded-lg cursor-pointer"
+                        width={300}
+                        height={300}
+                        onClick={() => openModal(url)}
+                      />
                     ))}{" "}
                   </div>
                 )}
@@ -94,6 +107,13 @@ const Chat = () => {
             />
           </div>
         </div>
+        {selectedImage && (
+          <ImageModal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            imageUrl={selectedImage}
+          />
+        )}
       </div>
     </>
   );

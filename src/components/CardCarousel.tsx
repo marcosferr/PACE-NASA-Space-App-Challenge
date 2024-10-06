@@ -41,14 +41,14 @@ const CardCarousel = () => {
       >
         {data.map((item: CarouselItem, index: number) => (
           <SwiperSlide key={index}>
-            <div className="swiper-slide-content gap-y-10 bg-white">
+            <div className="swiper-slide-content gap-y-1 bg-white">
               <h1 className='text-6xl font-bold tracking-tight text-zinc-600'>{item.title}</h1>
               <p className='text-3xl text-zinc-900 font-normal tracking-tighter text-pretty leading-relaxed'>{item.text}</p>
               {item.image && (
                 <img 
                   src={item.image} 
                   alt={`Slide ${index}`}
-                  className='rounded-lg w-[30rem] cursor-pointer hover:brightness-90 transform transition duration-300 ease-in-out h-1/3' 
+                  className='rounded-lg w-[30rem] cursor-pointer hover:brightness-90 transform transition duration-300 ease-in-out h-auto ' 
                   onClick={() => openGallery(index)} 
                 />
               )}

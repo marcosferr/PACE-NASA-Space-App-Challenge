@@ -3,20 +3,19 @@ import InputComponent from "./Input.tsx";
 import useChat from "../hooks/useChat";
 import { Loader } from "../components/Loader/Loader.tsx";
 import UserIcon from "./icons/UserIcon.tsx";
-import LightGallery from 'lightgallery/react';
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-thumbnail.css';
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
-import '../CardCarousel.css';
-
+import LightGallery from "lightgallery/react";
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-zoom.css";
+import "lightgallery/css/lg-thumbnail.css";
+import lgThumbnail from "lightgallery/plugins/thumbnail";
+import lgZoom from "lightgallery/plugins/zoom";
+import "../CardCarousel.css";
 
 const Chat = () => {
   const { messages, sendMessage, loading } = useChat();
 
   const [inputValue, setInputValue] = useState("");
-
+  const [messageToSend, setMessageToSend] = useState(false);
 
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -29,6 +28,7 @@ const Chat = () => {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const lightGalleryRef = useRef<any>(null);
 
   const openGallery = (index: number) => {
@@ -36,6 +36,18 @@ const Chat = () => {
       lightGalleryRef.current.openGallery(index);
     }
   };
+
+  const setFollowupQuestion = (question: string) => {
+    setInputValue(question);
+    setMessageToSend(true);
+  };
+
+  useEffect(() => {
+    if (messageToSend && !loading) {
+      handleSendMessage();
+      setMessageToSend(false);
+    }
+  }, [messageToSend, loading, handleSendMessage]);
 
   useEffect(() => {
     if (lastMessageRef.current) {
@@ -99,6 +111,15 @@ const Chat = () => {
                     ))}{" "}
                   </div>
                 )}
+                {msg.references && (
+                  <div className="flex gap-3 my-4 text-gray-600 text-sm flex-1">
+                    {msg.references.map((item, index) => (
+                      <a key={index} href={item?.url} target="_blank">
+                        {item?.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </>
             ))}
             {loading && (
@@ -107,6 +128,22 @@ const Chat = () => {
                 <Loader />{" "}
               </div>
             )}
+            {messages.length > 0 &&
+              messages[messages.length - 1].followup_questions && (
+                <div className="flex gap-3 my-4 text-gray-600 text-sm flex-1">
+                  {messages[messages.length - 1].followup_questions?.map(
+                    (question, index) => (
+                      <button
+                        key={index}
+                        className="text-blue-500 underline"
+                        onClick={() => setFollowupQuestion(question)}
+                      >
+                        {question}
+                      </button>
+                    )
+                  )}
+                </div>
+              )}
             <div id="bottomRef" ref={bottomRef} tabIndex={-1}></div>
           </div>
           <div className="w-full flex items-center border-t py-2">
@@ -125,17 +162,16 @@ const Chat = () => {
             dynamic
             dynamicEl={messages
               .filter((msg) => msg.urls && msg.urls.length > 0) // Filter out messages without URLs
-              .flatMap((msg) =>
-                msg.urls?.map((url) => ({
-                  src: url,
-                  thumb: url,
-                  subHtml: `<h4>${msg.type}</h4><p>${msg.message}</p>`,
-                })) ?? []
-              )
-            }
+              .flatMap(
+                (msg) =>
+                  msg.urls?.map((url) => ({
+                    src: url,
+                    thumb: url,
+                    subHtml: `<h4>${msg.type}</h4><p>${msg.message}</p>`,
+                  })) ?? []
+              )}
           />
         </div>
-
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ChatbotService from "../services/chatbotService";
+import ChatbotService, { Reference } from "../services/chatbotService";
 
 type MessageType = "computer" | "user" | "image";
 
@@ -7,6 +7,8 @@ interface Message {
   type: MessageType;
   message: string;
   urls?: string[];
+  references?: Reference[];
+  followup_questions?: string[];
 }
 
 const useChat = () => {
@@ -24,6 +26,8 @@ const useChat = () => {
         type: "computer",
         message: responseMessage.response,
         urls: responseMessage?.img_url,
+        references: responseMessage?.references,
+        followup_questions: responseMessage?.followup_questions,
       };
       setMessages((prevMessages) => [...prevMessages, computerMessage]);
     } catch (error) {

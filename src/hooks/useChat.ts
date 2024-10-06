@@ -6,7 +6,7 @@ type MessageType = "computer" | "user" | "image";
 interface Message {
   type: MessageType;
   message: string;
-  url?: string;
+  urls?: string[];
 }
 
 const useChat = () => {
@@ -22,7 +22,8 @@ const useChat = () => {
       const responseMessage = await ChatbotService.sendMessage(message);
       const computerMessage: Message = {
         type: "computer",
-        message: responseMessage,
+        message: responseMessage.response,
+        urls: responseMessage?.img_url,
       };
       setMessages((prevMessages) => [...prevMessages, computerMessage]);
     } catch (error) {

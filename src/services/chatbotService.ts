@@ -1,9 +1,12 @@
 import axios from "axios";
 
 const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-
+interface ChatBotResponse {
+  response: string;
+  img_url?: string[];
+}
 class ChatbotService {
-  async sendMessage(message: string): Promise<string> {
+  async sendMessage(message: string): Promise<ChatBotResponse> {
     try {
       const response = await axios.post(
         `${VITE_BACKEND_URL}/api/v1/messages/`,

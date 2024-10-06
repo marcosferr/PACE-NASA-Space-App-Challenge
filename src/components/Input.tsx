@@ -1,5 +1,5 @@
 import React from "react";
-import SendIcon from "./SendIcon";
+import SendIcon from "./icons/SendIcon";
 
 interface InputComponentProps {
   inputValue: string;
@@ -21,7 +21,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
       <input
         type="text"
         id="Prompt"
-        placeholder=" Ask your question to Plankty"
+        placeholder="Ask your question to Plankty"
         className="w-full rounded-md border-gray-200 pe-10 p-2"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}

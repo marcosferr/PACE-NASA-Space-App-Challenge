@@ -1,21 +1,22 @@
 // src/App.tsx
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { StrictMode } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import MainApp from "./components/MainApp";
+import Layout from "./components/Layout";
+import "./index.css";
 
-const App = () => {
-  return (
+const App = () => (
+  <StrictMode>
     <Router>
       <Routes>
-        {/* Root path renders Landing Page */}
-        <Route path="/" element={<LandingPage />} />
-
-        {/* Same URL or path can render Main App upon some condition */}
-        <Route path="/app" element={<MainApp />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<LandingPage />} />
+          <Route path="app" element={<MainApp />} />
+        </Route>
       </Routes>
     </Router>
-  );
-};
+  </StrictMode>
+);
 
 export default App;

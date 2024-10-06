@@ -61,7 +61,7 @@ const Chat = () => {
                 <div
                   ref={messages.length - 1 === index ? lastMessageRef : null}
                   key={index}
-                  className="flex gap-3 my-4 text-gray-600 text-sm flex-1"
+                  className="flex gap-3 my-4 text-gray-600 text-lg flex-1"
                 >
                   <span className="relative flex shrink-0 overflow-hidden rounded-full size-12">
                     <div className="rounded-full bg-gray-100 border p-1">

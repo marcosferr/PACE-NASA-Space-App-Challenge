@@ -15,6 +15,7 @@ const Chat = () => {
   const { messages, sendMessage, loading } = useChat();
 
   const [inputValue, setInputValue] = useState("");
+  const [messageToSend, setMessageToSend] = useState(false);
 
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -38,7 +39,15 @@ const Chat = () => {
 
   const setFollowupQuestion = (question: string) => {
     setInputValue(question);
+    setMessageToSend(true);
   };
+
+  useEffect(() => {
+    if (messageToSend && !loading) {
+      handleSendMessage();
+      setMessageToSend(false);
+    }
+  }, [messageToSend, loading, handleSendMessage]);
 
   useEffect(() => {
     if (lastMessageRef.current) {

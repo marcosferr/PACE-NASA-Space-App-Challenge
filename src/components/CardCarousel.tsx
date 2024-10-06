@@ -48,7 +48,7 @@ const CardCarousel = () => {
                 <img 
                   src={item.image} 
                   alt={`Slide ${index}`}
-                  className='rounded-lg w-[30rem] cursor-pointer hover:brightness-90 transform transition duration-300 ease-in-out h-1/3' 
+                  className='rounded-lg w-[30rem] cursor-pointer hover:brightness-90 transform transition duration-300 ease-in-out h-auto ' 
                   onClick={() => openGallery(index)} 
                 />
               )}

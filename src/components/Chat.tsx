@@ -104,9 +104,9 @@ const Chat = () => {
                 )}
                 {msg.references && (
                   <div className="flex gap-3 my-4 text-gray-600 text-sm flex-1">
-                    {msg.references.map((url, index) => (
-                      <a key={index} href={url} target="_blank">
-                        {url}
+                    {msg.references.map((item, index) => (
+                      <a key={index} href={item?.url} target="_blank">
+                        {item?.label}
                       </a>
                     ))}
                   </div>

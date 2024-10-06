@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ChatbotService from "../services/chatbotService";
+import ChatbotService, { Reference } from "../services/chatbotService";
 
 type MessageType = "computer" | "user" | "image";
 
@@ -7,7 +7,7 @@ interface Message {
   type: MessageType;
   message: string;
   urls?: string[];
-  references?: string[];
+  references?: Reference[];
   followup_questions?: string[];
 }
 

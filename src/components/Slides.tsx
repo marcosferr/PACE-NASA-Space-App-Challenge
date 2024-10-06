@@ -3,7 +3,7 @@ import CardCarousel from "./CardCarousel";
 const Slides = () => {
     return (
         <section 
-        className="relative bg-zinc-50 w-2/3 text-pretty flex flex-col rounded-md border border-zinc-800">
+        className="relative  w-2/3 text-pretty flex flex-col shadow-sm  h-full bg-white p-6 rounded-lg border border-[#e5e7eb] overflow-hidden ">
             <CardCarousel/>
         </section>
     );

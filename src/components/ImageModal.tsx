@@ -1,41 +1,50 @@
-import React from "react";
-import Modal from "react-modal";
+import React, { useRef, useEffect } from 'react';
+import LightGallery from 'lightgallery/react';
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-zoom.css';
+import 'lightgallery/css/lg-thumbnail.css';
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgZoom from 'lightgallery/plugins/zoom';
 
 interface ImageModalProps {
   isOpen: boolean;
-  onRequestClose: () => void;
   imageUrl: string;
+  onRequestClose: () => void;
 }
 
 const ImageModal: React.FC<ImageModalProps> = ({
   isOpen,
-  onRequestClose,
   imageUrl,
+  onRequestClose,
 }) => {
+  const lightGallery = useRef<any>(null);
+
+  useEffect(() => {
+    if (isOpen && lightGallery.current) {
+      lightGallery.current.openGallery();
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (lightGallery.current) {
+        lightGallery.current.destroy(true);
+        lightGallery.current = null;
+      }
+    };
+  }, []);
+
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      contentLabel="Image Modal"
-      style={{
-        overlay: {
-          zIndex: 1000, // Set your desired z-index here
-        },
-        content: {
-          zIndex: 1001, // Set your desired z-index here
-        },
-      }}
-    >
-      <div className="flex flex-col justify-center items-center h-full">
-        <button
-          onClick={onRequestClose}
-          className="self-end mb-4 p-2 bg-red-500 text-white rounded"
-        >
-          Close
-        </button>
-        <img src={imageUrl} alt="Full view" className="max-w-full max-h-full" />
-      </div>
-    </Modal>
+    <div style={{ display: isOpen ? 'block' : 'none' }}>
+      <LightGallery
+        onInit={(detail) => {
+          lightGallery.current = detail.instance;
+        }}
+        plugins={[lgThumbnail, lgZoom]}
+        dynamic
+        dynamicEl={[{ src: imageUrl, thumb: imageUrl }]}
+      />
+    </div>
   );
 };
 

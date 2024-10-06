@@ -3,14 +3,25 @@ import InputComponent from "./Input.tsx";
 import useChat from "../hooks/useChat";
 import { Loader } from "../components/Loader/Loader.tsx";
 import UserIcon from "./icons/UserIcon.tsx";
-import ImageModal from "./ImageModal.tsx";
+import LightGallery from 'lightgallery/react';
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-zoom.css';
+import 'lightgallery/css/lg-thumbnail.css';
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgZoom from 'lightgallery/plugins/zoom';
+import '../CardCarousel.css';
+
+
 const Chat = () => {
   const { messages, sendMessage, loading } = useChat();
+
   const [inputValue, setInputValue] = useState("");
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+
   const bottomRef = useRef<HTMLDivElement>(null);
+
   const lastMessageRef = useRef<HTMLDivElement>(null);
+
   const handleSendMessage = () => {
     if (inputValue.trim() !== "") {
       sendMessage(inputValue);
@@ -18,13 +29,12 @@ const Chat = () => {
     }
   };
 
-  const openModal = (imageUrl: string) => {
-    setSelectedImage(imageUrl);
-    setModalIsOpen(true);
-  };
-  const closeModal = () => {
-    setSelectedImage(null);
-    setModalIsOpen(false);
+  const lightGalleryRef = useRef<any>(null);
+
+  const openGallery = (index: number) => {
+    if (lightGalleryRef.current) {
+      lightGalleryRef.current.openGallery(index);
+    }
   };
 
   useEffect(() => {
@@ -45,7 +55,7 @@ const Chat = () => {
             </div>
             <div></div>
           </div>
-          <div className="flex-1 pr-4 max-h-[670px] overflow-auto">
+          <div className="flex-1 pr-4 max-h-[700px] overflow-auto overflow-x-hidden my-auto">
             {messages.map((msg, index) => (
               <>
                 <div
@@ -81,10 +91,10 @@ const Chat = () => {
                       <img
                         key={index}
                         src={url}
-                        className="rounded-lg cursor-pointer"
+                        className="rounded-lg cursor-pointer hover:brightness-90 transform transition duration-300 ease-in-out"
                         width={300}
                         height={300}
-                        onClick={() => openModal(url)}
+                        onClick={() => openGallery(index)}
                       />
                     ))}{" "}
                   </div>
@@ -107,13 +117,25 @@ const Chat = () => {
             />
           </div>
         </div>
-        {selectedImage && (
-          <ImageModal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
-            imageUrl={selectedImage}
+        <div className="overflow-hidden">
+          <LightGallery
+            onInit={(detail) => (lightGalleryRef.current = detail.instance)}
+            speed={500}
+            plugins={[lgThumbnail, lgZoom]}
+            dynamic
+            dynamicEl={messages
+              .filter((msg) => msg.urls && msg.urls.length > 0) // Filter out messages without URLs
+              .flatMap((msg) =>
+                msg.urls?.map((url) => ({
+                  src: url,
+                  thumb: url,
+                  subHtml: `<h4>${msg.type}</h4><p>${msg.message}</p>`,
+                })) ?? []
+              )
+            }
           />
-        )}
+        </div>
+
       </div>
     </>
   );

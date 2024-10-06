@@ -16,8 +16,7 @@ function App() {
         {showSlides ? 'Hide Slides' : 'Show Slides'}
       </button>
 
-      {/* Main content: takes the available space */}
-      <section className="flex-grow flex px-8 gap-x-4 my-8">
+      <section className="flex-grow flex px-8 gap-x-4 my-2">
         {showSlides && <Slides />}
 
         {/* Chat aside section */}

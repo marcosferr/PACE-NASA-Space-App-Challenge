@@ -6,27 +6,27 @@ const LandingPage = () => {
       <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#7dc9aa_100%)]"></div>
       <Header />
 
-      <section className="flex flex-col items-center gap-y-10">
+      <section className="flex flex-col items-center gap-y-10 px-8 xl:px-0">
         <div className="flex flex-col items-center gap-y-2">
-          <h1 className="text-7xl  font-black tracking-tight  text-green-700">
+          <h1 className="text-4xl xl:text-7xl  font-black tracking-tight  text-green-700">
             ARANDU PACE
           </h1>
-          <p className="textxl font-normal">
+          <p className="font-normal">
             {" "}
             Arandu means <i>the wisdom rooted in nature</i>
           </p>
-          <h2 className=" text-2xl font-normal text-green-950">
+          <h2 className="text-normal xl:text-2xl font-normal text-green-950">
             Plankton, Aerosol, Cloud, ocean Ecosystem{" "}
           </h2>
         </div>
         <img
           src="./pace-space.webp"
           alt="A picture of the pace spacecraft"
-          className="rounded-lg w-1/3"
+          className="rounded-lg w-full  lg:w-1/3 xl:w-1/3"
         />
         <a
           href="/app"
-          className="start-learning-link bg-zinc-950 border border-green-950 text-white rounded-md w-1/3 text-center py-2 hover:brightness-150 transition-all ease-in-out duration-300"
+          className="start-learning-link bg-zinc-950 border border-green-950 text-white rounded-md w-full lg:w-1/3 xl:w-1/3 text-center py-2 hover:brightness-150 transition-all ease-in-out duration-300"
         >
           ✨ Start Learning
         </a>
@@ -35,7 +35,7 @@ const LandingPage = () => {
           mission—understanding the ocean and atmosphere to sustain life on
           Earth.
         </p>
-        <p className="text-sm ">
+        <p className="text-sm">
           Open Source project presented at the{" "}
           <a
             className="underline"

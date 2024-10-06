@@ -1,18 +1,13 @@
 [
           {
-            "text": "PACE - it All Adds Up!",
-            "phrase":"A photon of light from the sun (along with millions of its friends) slams into science sensors onboard the PACE satellite 676.5 km (420 mi) above the Earth. ",
+            "title": "PACE - it All Adds Up!",
+            "text":"A photon of light from the sun (along with millions of its friends) slams into science sensors onboard the PACE satellite 676.5 km (420 mi) above the Earth. ",
             "image": "https://pace.oceansciences.org/images/Water_Leaving_Component_v4_2000w.jpg"
           },
           {
-            "text": "Radiative transfer",
-            "phrase":"how can we use light to learn about ocean health? Or learn about tiny particles in the atmosphere that can affect our own health, known as aerosols? The answer lies in understanding Radiative transfer. ",
+            "title": "Radiative transfer",
+            "text":"how can we use light to learn about ocean health? Or learn about tiny particles in the atmosphere that can affect our own health, known as aerosols? The answer lies in understanding Radiative transfer. ",
             "image": "https://pace.oceansciences.org/images/RTT_Components_2000w_v2.jpg"
-          },
-          {
-            "text":,
-            "phrase":,
-            "image":,
           }
       
 ]

@@ -65,7 +65,19 @@ const Chat = () => {
                     {msg.message}
                   </p>
                 </div>
-                {msg?.url ? <img src={msg.url}></img> : null}
+                {msg.urls && (
+                  <div className="flex gap-3 my-4 text-gray-600 text-sm flex-1">
+                    {msg.urls.map((url, index) => (
+                      <img
+                        key={index}
+                        src={url}
+                        className="rounded-lg"
+                        width={100}
+                        height={100}
+                      ></img>
+                    ))}{" "}
+                  </div>
+                )}
               </>
             ))}
             {loading && (

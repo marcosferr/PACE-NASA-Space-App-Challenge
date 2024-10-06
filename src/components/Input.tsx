@@ -1,7 +1,7 @@
 import SendIcon from "./SendIcon";
 const InputComponent: React.FC = () => {
   return (
-    <div className="relative border border-zinc-500 rounded-md">
+    <div className="relative border border-zinc-500 rounded-md max-w-[50rem] mx-auto">
       <label htmlFor="Prompt" className="sr-only">Write down your prompt</label>
 
       <input

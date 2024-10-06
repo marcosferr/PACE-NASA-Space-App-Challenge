@@ -7,6 +7,7 @@ interface Message {
   type: MessageType;
   message: string;
   urls?: string[];
+  references?: string[];
 }
 
 const useChat = () => {
@@ -24,6 +25,7 @@ const useChat = () => {
         type: "computer",
         message: responseMessage.response,
         urls: responseMessage?.img_url,
+        references: responseMessage?.references,
       };
       setMessages((prevMessages) => [...prevMessages, computerMessage]);
     } catch (error) {

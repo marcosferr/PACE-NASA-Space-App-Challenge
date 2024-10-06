@@ -1,31 +1,21 @@
-import { useState } from 'react';
-import Chat from './components/Chat';
-import Header from './components/Header';
-import Slides from './components/Slides';
+// src/App.tsx
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import LandingPage from "./components/LandingPage";
+import MainApp from "./components/MainApp";
 
-function App() {
-  const [showSlides, setShowSlides] = useState(true);
-
+const App = () => {
   return (
-    <main className="min-h-screen flex flex-col w-screen">
-      <Header />
-      <button
-        onClick={() => setShowSlides(!showSlides)}
-        className="self-start bg-zinc-900 px-2 py-1 mx-8 text-white text-xsm rounded"
-      >
-        {showSlides ? 'Hide Slides' : 'Show Slides'}
-      </button>
+    <Router>
+      <Routes>
+        {/* Root path renders Landing Page */}
+        <Route path="/" element={<LandingPage />} />
 
-      <section className="flex-grow flex px-8 gap-x-4 my-2">
-        {showSlides && <Slides />}
-
-        {/* Chat aside section */}
-        <aside className={showSlides ? "w-1/3" : "w-full"}>
-          <Chat />
-        </aside>
-      </section>
-    </main>
+        {/* Same URL or path can render Main App upon some condition */}
+        <Route path="/app" element={<MainApp />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

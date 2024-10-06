@@ -3,26 +3,33 @@ import InputComponent from "./Input.tsx";
 import useChat from "../hooks/useChat";
 import { Loader } from "../components/Loader/Loader.tsx";
 import UserIcon from "./icons/UserIcon.tsx";
+import ImageModal from "./ImageModal.tsx";
 const Chat = () => {
   const { messages, sendMessage, loading } = useChat();
   const [inputValue, setInputValue] = useState("");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
-    const lastMessageRef = useRef<HTMLDivElement>(null);
+  const lastMessageRef = useRef<HTMLDivElement>(null);
   const handleSendMessage = () => {
     if (inputValue.trim() !== "") {
       sendMessage(inputValue);
       setInputValue("");
     }
   };
-  function focusRef() {
-    if (bottomRef.current) {
-      bottomRef.current.focus();
-    }
-  }
 
-    useEffect(() => {
+  const openModal = (imageUrl: string) => {
+    setSelectedImage(imageUrl);
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setSelectedImage(null);
+    setModalIsOpen(false);
+  };
+
+  useEffect(() => {
     if (lastMessageRef.current) {
-      lastMessageRef.current.scrollIntoView({ behavior: 'smooth' });
+      lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
 
@@ -32,10 +39,11 @@ const Chat = () => {
         <div className="flex flex-col w-full h-full bg-white p-6 rounded-lg border border-[#e5e7eb] overflow-hidden shadow-md">
           <div className="justify-between">
             <div>
-              <h2 className="font-semibold text-lg tracking-tight">Plankty 🎓🦠</h2>
+              <h2 className="font-semibold text-lg tracking-tight">
+                Plankty 🎓🦠
+              </h2>
             </div>
-            <div>
-            </div>
+            <div></div>
           </div>
           <div className="flex-1 pr-4 max-h-[670px] overflow-auto">
             {messages.map((msg, index) => (
@@ -73,10 +81,11 @@ const Chat = () => {
                       <img
                         key={index}
                         src={url}
-                        className="rounded-lg"
-                        width={100}
-                        height={100}
-                      ></img>
+                        className="rounded-lg cursor-pointer"
+                        width={300}
+                        height={300}
+                        onClick={() => openModal(url)}
+                      />
                     ))}{" "}
                   </div>
                 )}
@@ -98,6 +107,13 @@ const Chat = () => {
             />
           </div>
         </div>
+        {selectedImage && (
+          <ImageModal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            imageUrl={selectedImage}
+          />
+        )}
       </div>
     </>
   );

@@ -12,7 +12,7 @@ class ChatbotService {
         `${VITE_BACKEND_URL}/api/v1/messages/`,
         { message }
       );
-      return response.data.response;
+      return response.data;
     } catch (error) {
       console.error("Error sending message:", error);
       throw new Error("Failed to send message");

@@ -7,22 +7,17 @@ const Chat = () => {
   const { messages, sendMessage, loading } = useChat();
   const [inputValue, setInputValue] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
-    const lastMessageRef = useRef<HTMLDivElement>(null);
+  const lastMessageRef = useRef<HTMLDivElement>(null);
   const handleSendMessage = () => {
     if (inputValue.trim() !== "") {
       sendMessage(inputValue);
       setInputValue("");
     }
   };
-  function focusRef() {
-    if (bottomRef.current) {
-      bottomRef.current.focus();
-    }
-  }
 
-    useEffect(() => {
+  useEffect(() => {
     if (lastMessageRef.current) {
-      lastMessageRef.current.scrollIntoView({ behavior: 'smooth' });
+      lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
 
@@ -32,10 +27,11 @@ const Chat = () => {
         <div className="flex flex-col w-full h-full bg-white p-6 rounded-lg border border-[#e5e7eb] overflow-hidden shadow-md">
           <div className="justify-between">
             <div>
-              <h2 className="font-semibold text-lg tracking-tight">Plankty 🎓🦠</h2>
+              <h2 className="font-semibold text-lg tracking-tight">
+                Plankty 🎓🦠
+              </h2>
             </div>
-            <div>
-            </div>
+            <div></div>
           </div>
           <div className="flex-1 pr-4 max-h-[670px] overflow-auto">
             {messages.map((msg, index) => (

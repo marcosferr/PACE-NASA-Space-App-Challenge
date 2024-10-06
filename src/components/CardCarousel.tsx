@@ -24,8 +24,8 @@ const CardCarousel = () => {
       {data.map((item: CarouselItem, index: number) => (
         <SwiperSlide key={index}>
           <div className="swiper-slide-content gap-y-10">
-            <h1 className='text-6xl font-bold tracking-tight text-zinc-600'>{item.title}</h1>
-            <p className='text-3xl text-zinc-900 font-normal tracking-tighter text-pretty leading-relaxed'>{item.text}</p>
+            <h1 className='text-5xl font-bold tracking-tight text-zinc-600'>{item.title}</h1>
+            <p className='text-2xl text-zinc-900 font-normal tracking-tighter text-pretty leading-relaxed'>{item.text}</p>
             {item.image && <img src={item.image} alt={`Slide ${index}`} className='rounded-lg w-[30rem]' />}
 
           </div>

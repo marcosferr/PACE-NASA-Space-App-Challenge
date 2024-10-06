@@ -1,13 +1,32 @@
 [
-          {
-            "title": "PACE - it All Adds Up!",
-            "text":"A photon of light from the sun (along with millions of its friends) slams into science sensors onboard the PACE satellite 676.5 km (420 mi) above the Earth. ",
-            "image": "https://pace.oceansciences.org/images/Water_Leaving_Component_v4_2000w.jpg"
-          },
-          {
-            "title": "Radiative transfer",
-            "text":"how can we use light to learn about ocean health? Or learn about tiny particles in the atmosphere that can affect our own health, known as aerosols? The answer lies in understanding Radiative transfer. ",
-            "image": "https://pace.oceansciences.org/images/RTT_Components_2000w_v2.jpg"
-          }
-      
+  {
+    "title": "PACE - it All Adds Up!",
+    "text": "A photon of light from the sun (along with millions of its friends) slams into science sensors onboard the PACE satellite 676.5 km (420 mi) above the Earth. ",
+    "image": "https://pace.oceansciences.org/images/Water_Leaving_Component_v4_2000w.jpg"
+  },
+  {
+    "title": "Radiative transfer",
+    "text": "How can we use light to learn about ocean health? Or learn about tiny particles in the atmosphere that can affect our own health, known as aerosols? The answer lies in understanding Radiative transfer. ",
+    "image": "https://pace.oceansciences.org/images/RTT_Components_2000w_v2.jpg"
+  },
+  {
+    "title": "How does the ocean interact with light",
+    "text": "Similar to the atmosphere, light attenuation in the ocean is dependent on the concentration of 'stuff' in the water. For example, light can shine all the water to the bottom of clear Caribbean waters, whereas you can barely see your hand beneath the surface in muddy river waters. Additionally, even in clear waters some wavelengths can penetrate further than others.",
+    "image": "https://oceanservice.noaa.gov/facts/lightinocean2.jpg"
+  },
+  {
+    "title": "Ocean Color Instrument",
+    "text": "PACE's primary sensor, the Ocean Color Instrument (OCI), is a highly advanced optical spectrometer that will be used to measure properties of light over portions of the electromagnetic spectrum. It will enable continuous measurement of light at finer wavelength resolution than previous NASA satellite sensors, extending key system ocean color data records for climate studies. ",
+    "image": "https://pace.oceansciences.org/images/GSFC_20220805_PACE_064914_2000w.jpg"
+  },
+  {
+    "title": "Ocean Color Instrument: Features",
+    "text": "Cross track, 360° continuous rotating telescope,Two slit grating hyperspectral spectrographs (ultraviolet to visible & visible to near-infrared, NIR),Fiber-coupled multiband filter spectrograph (NIR-to shortwave-infrared)",
+    "image": "https://pace.oceansciences.org/images/oci_mar2018_toward_annotated.jpg"
+  },
+  {
+    "title": "Measuring What's in the Ocean",
+    "text": "Just as bananas have spectral signatures, so do OACs in the ocean. The spectral signatures of each of these constituents - for example, chlorophyll, CDOM, sediment - tells scientists about their Inherent Optical Properties, information that is critical to deciphering which elements are being observed by PACE.",
+    "image": "https://pace.oceansciences.org/images/Ocean_Modal_Bkgrd_1333x1333_JamesBay.png"
+  }
 ]

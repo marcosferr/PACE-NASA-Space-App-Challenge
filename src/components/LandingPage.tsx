@@ -1,4 +1,3 @@
-import Header from "./Header";
 
 const LandingPage = () => {
     return (
@@ -12,7 +11,7 @@ const LandingPage = () => {
                     <p className='font-normal'> Arandu means <i>the wisdom rooted in nature</i></p>
                 </div>
                 {/* <img src="./pace-space.webp" alt="A picture of the pace spacecraft" className='rounded-lg w-full  lg:w-1/3 xl:w-1/3' /> */}
-                    <a href="/app" className='bg-zinc-950 border border-green-950 text-white rounded-md w-full lg:w-1/3 xl:w-1/3 text-center py-2 hover:brightness-150 transition-all ease-in-out duration-300'>✨ Start Learning</a>
+                    <a href="/app" className='start-learning-link bg-zinc-950 border border-green-950 text-white rounded-md w-full lg:w-1/3 xl:w-1/3 text-center py-2 hover:brightness-150 transition-all ease-in-out duration-300'>✨ Start Learning</a>
                 <p className="text-center text-green-900 text-sm font-normal max-w-lg mt-4">
                     Unlock the power of scientific knowledge through the PACE mission—understanding the ocean and atmosphere to sustain life on Earth.
                 </p>

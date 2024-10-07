@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from 'react';
-import LightGallery from 'lightgallery/react';
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-thumbnail.css';
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
+import React, { useRef, useEffect } from "react";
+import LightGallery from "lightgallery/react";
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-zoom.css";
+import "lightgallery/css/lg-thumbnail.css";
+import lgThumbnail from "lightgallery/plugins/thumbnail";
+import lgZoom from "lightgallery/plugins/zoom";
 
 interface ImageModalProps {
   isOpen: boolean;
@@ -15,8 +15,9 @@ interface ImageModalProps {
 const ImageModal: React.FC<ImageModalProps> = ({
   isOpen,
   imageUrl,
-  onRequestClose,
+  // onRequestClose,
 }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const lightGallery = useRef<any>(null);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
   }, []);
 
   return (
-    <div style={{ display: isOpen ? 'block' : 'none' }}>
+    <div style={{ display: isOpen ? "block" : "none" }}>
       <LightGallery
         onInit={(detail) => {
           lightGallery.current = detail.instance;

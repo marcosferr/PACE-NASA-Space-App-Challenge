@@ -1,17 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Pagination, Autoplay, Keyboard, Mousewheel } from 'swiper/modules';
-import LightGallery from 'lightgallery/react';
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-thumbnail.css';
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
-import '../CardCarousel.css';
-import data from '../data/facts.json';
-
+import { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination, Autoplay, Keyboard, Mousewheel } from "swiper/modules";
+import LightGallery from "lightgallery/react";
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-zoom.css";
+import "lightgallery/css/lg-thumbnail.css";
+import lgThumbnail from "lightgallery/plugins/thumbnail";
+import lgZoom from "lightgallery/plugins/zoom";
+import "../CardCarousel.css";
+import data from "../data/facts.json";
 
 interface CarouselItem {
   title: string;
@@ -20,6 +19,7 @@ interface CarouselItem {
 }
 
 const CardCarousel = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const lightGalleryRef = useRef<any>(null);
 
   const openGallery = (index: number) => {
@@ -42,14 +42,18 @@ const CardCarousel = () => {
         {data.map((item: CarouselItem, index: number) => (
           <SwiperSlide key={index}>
             <div className="swiper-slide-content gap-y-1 bg-white">
-              <h1 className='text-6xl font-bold tracking-tight text-zinc-600'>{item.title}</h1>
-              <p className='text-3xl text-zinc-900 font-normal tracking-tighter text-pretty leading-relaxed'>{item.text}</p>
+              <h1 className="text-6xl font-bold tracking-tight text-zinc-600">
+                {item.title}
+              </h1>
+              <p className="text-3xl text-zinc-900 font-normal tracking-tighter text-pretty leading-relaxed">
+                {item.text}
+              </p>
               {item.image && (
-                <img 
-                  src={item.image} 
+                <img
+                  src={item.image}
                   alt={`Slide ${index}`}
-                  className='rounded-lg w-[30rem] cursor-pointer hover:brightness-90 transform transition duration-300 ease-in-out h-auto ' 
-                  onClick={() => openGallery(index)} 
+                  className="rounded-lg w-[30rem] cursor-pointer hover:brightness-90 transform transition duration-300 ease-in-out h-auto "
+                  onClick={() => openGallery(index)}
                 />
               )}
             </div>

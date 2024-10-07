@@ -8,7 +8,7 @@ import "./index.css";
 
 const App = () => (
   <StrictMode>
-    <Router>
+    <Router basename="/PACE-NASA-Space-App-Challenge">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<LandingPage />} />

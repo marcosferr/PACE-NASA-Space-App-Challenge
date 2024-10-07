@@ -1,6 +1,12 @@
+import { Link } from "react-router-dom";
 import Header from "./Header";
 
 const LandingPage = () => {
+  const handleImageError = (
+    event: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    event.currentTarget.src = "/PACE-NASA-Space-App-Challenge/pace-space.webp";
+  };
   return (
     <main>
       <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#7dc9aa_100%)]"></div>
@@ -23,13 +29,14 @@ const LandingPage = () => {
           src="./pace-space.webp"
           alt="A picture of the pace spacecraft"
           className="rounded-lg w-full  lg:w-1/3 xl:w-1/3"
+          onError={handleImageError}
         />
-        <a
-          href="/app"
+        <Link
+          to="/app"
           className="start-learning-link bg-zinc-950 border border-green-950 text-white rounded-md w-full lg:w-1/3 xl:w-1/3 text-center py-2 hover:brightness-150 transition-all ease-in-out duration-300"
         >
           ✨ Start Learning
-        </a>
+        </Link>
         <p className="text-center text-green-900 text-sm font-normal max-w-lg mt-4">
           Unlock the power of scientific knowledge through the PACE
           mission—understanding the ocean and atmosphere to sustain life on

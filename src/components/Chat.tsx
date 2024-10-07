@@ -12,7 +12,7 @@ import lgZoom from "lightgallery/plugins/zoom";
 import "../CardCarousel.css";
 
 const Chat = () => {
-  const { messages, sendMessage, loading } = useChat();
+  const { messages, sendMessage, loading, playTTS } = useChat();
 
   const [inputValue, setInputValue] = useState("");
   const [messageToSend, setMessageToSend] = useState(false);
@@ -145,6 +145,14 @@ const Chat = () => {
                 </div>
               )}
             <div id="bottomRef" ref={bottomRef} tabIndex={-1}></div>
+            {messages.length > 0 && (
+              <button
+                className="text-blue-500 underline"
+                onClick={() => playTTS()}
+              >
+                Play
+              </button>
+            )}
           </div>
           <div className="w-full flex items-center border-t py-2">
             <InputComponent

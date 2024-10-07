@@ -1,12 +1,11 @@
-import Header from './Header';
-
+import Header from "./Header";
 
 const LandingPage = () => {
     return (
         <main>
             <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#7dc9aa_100%)]"></div>
 
-            <section className='flex flex-col items-center gap-y-10 px-8 xl:px-0 mt-10'>
+            <section className='flex flex-col items-center justify-center gap-y-10 px-8 xl:px-0 my-auto h-screen'>
                 <img src="./arandu-pace-icon.png" alt="arandu pace icon" />
                 <div className='flex flex-col items-center gap-y-2'>
                    <img src='./arandu-logo.webp' alt='Arandu logo' />
@@ -17,7 +16,7 @@ const LandingPage = () => {
                 <p className="text-center text-green-900 text-sm font-normal max-w-lg mt-4">
                     Unlock the power of scientific knowledge through the PACE mission—understanding the ocean and atmosphere to sustain life on Earth.
                 </p>
-                <p className='text-sm'>
+                <p className='text-sm text-center'>
                     Open Source project presented at the <a className='underline' href="https://www.spaceappschallenge.org/nasa-space-apps-2024/">International Space Apps Challenge 2024</a> <br />
                     
                 </p>
